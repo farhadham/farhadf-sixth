@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Followers from "./Followers";
-import { motion, useSpring } from "framer-motion";
+import { useSpring } from "framer-motion";
 
 const Mouse = ({ mouse }: any) => {
   const x = useSpring(0, {
@@ -15,12 +15,12 @@ const Mouse = ({ mouse }: any) => {
   });
 
   useEffect(() => {
-    x.set(mouse.clientX - 250);
-    y.set(mouse.clientY - 250);
+    x.set(mouse.pageX - 250);
+    y.set(mouse.pageY - 250);
   }, [mouse]);
 
   return (
-    <div>
+    <div className="sm:block hidden w-screen h-screen fixed pointer-events-none  z-50">
       <Followers mouse={mouse} />
       <Followers mouse={mouse} />
       <Followers mouse={mouse} />
